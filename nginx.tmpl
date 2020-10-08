@@ -358,7 +358,7 @@ server {
 	include /etc/nginx/vhost.d/default;
 	{{ end }}
 
-	location / {
+	location /{{ trim $upstream_name }} {
 		{{ if eq $proto "uwsgi" }}
 		include uwsgi_params;
 		uwsgi_pass {{ trim $proto }}://{{ trim $upstream_name }};
